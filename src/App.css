@@ -1,0 +1,92 @@
+
+#root {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.page {
+  min-height: 100vh;
+  padding: 40px 24px;
+  font-family: Arial, sans-serif;
+  color: #202544;
+  background: #f4f5fb;
+}
+
+.hero {
+  max-width: 850px;
+  margin: 0 auto 40px;
+  padding: 48px 24px;
+  text-align: center;
+  color: white;
+  background: linear-gradient(135deg, #4935a8, #8268e8);
+  border-radius: 20px;
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.hero h1 {
+  margin: 12px 0;
+  font-size: 48px;
+}
+
+.subtitle {
+  max-width: 580px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.features {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.features h2 {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.feature-card {
+  padding: 24px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(32, 37, 68, 0.08);
+}
+
+.feature-icon {
+  font-size: 30px;
+}
+
+.feature-card h3 {
+  margin-bottom: 10px;
+}
+
+.feature-card p {
+  color: #626780;
+  line-height: 1.6;
+}
+
+.footer {
+  margin-top: 40px;
+  text-align: center;
+  color: #626780;
+}
+
+@media (max-width: 700px) {
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+  }
+}
