@@ -20,5 +20,13 @@ export const studyFeatures = [
     title: 'Set Study Goals',
     description:
       'Break big academic goals into smaller, manageable steps.'
+  },
+
+  {
+    id: 4,
+    icon: '📊',
+    title: 'Monitor Your Progress',
+    description:
+      'Review your academic progress and celebrate your achievements.'
   }
 ];

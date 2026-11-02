@@ -1,37 +1,46 @@
 
+import { useState } from 'react';
 import { studyFeatures } from './studyFeatures.js';
+import Header from './components/SiteHeader.jsx';
+import FeatureList from './components/FeatureList';
+import SearchBar from './components/SearchBar';
+import Footer from './components/Footer';
 import './App.css';
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filteredFeatures = studyFeatures.filter((feature) =>
+    feature.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    feature.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const resultCount = filteredFeatures.length;
+
   return (
     <main className="page">
-      <header className="hero">
-        <p className="eyebrow">YOUR SUCCESS STARTS HERE</p>
-        <h1>StudySync</h1>
-        <p className="subtitle">
-          Your college life, organized in one place.
-          Plan assignments, track goals, and build better
-          study habits.
+      <Header />
+
+      <div className="search-section">
+        <h2>Find Your Study Tools</h2>
+        <SearchBar
+          searchTerm={searchTerm}
+          onSearch={setSearchTerm}
+        />
+        <p className="result-count">
+          Showing {resultCount} of {studyFeatures.length} study tools
         </p>
-      </header>
+      </div>
 
-      <section className="features">
-        <h2>Tools for Better Study Habits</h2>
+      {filteredFeatures.length > 0 ? (
+        <FeatureList features={filteredFeatures} />
+      ) : (
+        <p className="no-results">
+          No study tools found. Try another search.
+        </p>
+      )}
 
-        <div className="feature-grid">
-          {studyFeatures.map((feature) => (
-            <article className="feature-card" key={feature.id}>
-              <span className="feature-icon">{feature.icon}</span>
-              <h3>{feature.title}</h3>
-              <p>{feature.description}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <footer className="footer">
-        <p>StudySync — Small steps. Big progress.</p>
-      </footer>
+      <Footer />
     </main>
   );
 }
