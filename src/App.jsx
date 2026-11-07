@@ -1,47 +1,57 @@
 
-import { useState } from 'react';
-import { studyFeatures } from './studyFeatures.js';
-import Header from './components/SiteHeader.jsx';
-import FeatureList from './components/FeatureList';
-import SearchBar from './components/SearchBar';
-import Footer from './components/Footer';
-import './App.css';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+} from "react-router-dom";
+
+import Home from "./pages/Home.jsx";
+import Items from "./pages/Items.jsx";
+import ItemDetails from "./pages/ItemDetails.jsx";
+
+import "./App.css";
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const filteredFeatures = studyFeatures.filter((feature) =>
-    feature.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    feature.description.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  const resultCount = filteredFeatures.length;
-
   return (
-    <main className="page">
-      <Header />
+    <BrowserRouter>
+      <div className="app">
+        <header className="app-header">
+          <h1>StudySync</h1>
 
-      <div className="search-section">
-        <h2>Find Your Study Tools</h2>
-        <SearchBar
-          searchTerm={searchTerm}
-          onSearch={setSearchTerm}
-        />
-        <p className="result-count">
-          Showing {resultCount} of {studyFeatures.length} study tools
-        </p>
+            <nav>
+    <Link to="/">Home</Link>
+    {" | "}
+    <Link to="/items">Assignments</Link>
+  </nav>
+</header>
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+
+          <Route path="/items" element={<Items />} />
+
+          <Route
+            path="/items/:id"
+            element={<ItemDetails />}
+          />
+
+          <Route
+            path="*"
+            element={
+              <main>
+                <h1>Page Not Found</h1>
+                <a href="/">Return Home</a>
+              </main>
+            }
+          />
+        </Routes>
+
+        <footer>
+          <p>StudySync — Small steps. Big progress.</p>
+        </footer>
       </div>
-
-      {filteredFeatures.length > 0 ? (
-        <FeatureList features={filteredFeatures} />
-      ) : (
-        <p className="no-results">
-          No study tools found. Try another search.
-        </p>
-      )}
-
-      <Footer />
-    </main>
+    </BrowserRouter>
   );
 }
 

@@ -50,3 +50,23 @@ Create the production build:
 Test the built website locally:
 
    npm run preview
+
+## Homework 11 – Route Plan
+
+| URL | View |
+|---|---|
+| `/` | Home page – StudySync landing page |
+| `/items` | Item list – displays study assignments |
+| `/items/:id` | Item details – displays the selected assignment |
+
+### Navigation
+
+Users can navigate from the home page to the assignment list and select an assignment to view its details. Internal navigation uses React Router links.
+
+### Data
+
+Assignment details are determined by the ID in the URL. If an assignment ID does not exist, the application displays a not-found message.
+
+### Testing
+
+Navigation will be tested by clicking links, entering URLs directly, refreshing pages, using browser Back, and entering an invalid assignment ID.
